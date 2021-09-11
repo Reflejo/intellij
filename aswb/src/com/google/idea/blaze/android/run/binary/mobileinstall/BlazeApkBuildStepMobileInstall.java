@@ -161,15 +161,12 @@ public class BlazeApkBuildStepMobileInstall implements BlazeApkBuildStep {
           deviceFlag += ":tcp:" + adbAddr.getPort();
         }
       }
-      command.addBlazeFlags(BlazeFlags.DEVICE, deviceFlag);
 
       command
           .addTargets(label)
           .addBlazeFlags(blazeFlags)
           .addBlazeFlags(buildResultHelper.getBuildFlags())
-          .addExeFlags(exeFlags)
-          // MI launches apps by default. Defer app launch to BlazeAndroidLaunchTasksProvider.
-          .addExeFlags("--nolaunch_app");
+          .addExeFlags(exeFlags);
 
       SaveUtil.saveAllFiles();
       context.output(new StatusOutput("Invoking mobile-install..."));
