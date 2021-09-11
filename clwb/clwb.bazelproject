@@ -1,0 +1,18 @@
+directories:
+  .
+  -ijwb
+  -aswb
+  -plugin_dev
+
+targets:
+  //clwb:clwb_bazel_dev
+  //:clwb_tests
+
+workspace_type: intellij_plugin
+
+build_flags:
+  --define=ij_product=clion-latest
+
+test_sources:
+  */tests/unittests*
+  */tests/integrationtests*
