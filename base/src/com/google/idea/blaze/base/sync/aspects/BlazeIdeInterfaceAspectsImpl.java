@@ -671,6 +671,8 @@ public class BlazeIdeInterfaceAspectsImpl implements BlazeIdeInterface {
           BlazeCommand.builder(buildParams.blazeBinaryPath(), BlazeCommandName.BUILD);
       builder
           .addTargets(targets)
+          // Exclude all targets tagged with no-ide during sync
+          .addBlazeFlags("--build_tag_filters=-no-ide")
           .addBlazeFlags(BlazeFlags.KEEP_GOING)
           .addBlazeFlags(buildResultHelper.getBuildFlags())
           .addBlazeFlags(
